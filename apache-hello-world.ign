@@ -1,0 +1,31 @@
+{
+  "ignition": {
+    "version": "3.6.0"
+  },
+  "storage": {
+    "files": [
+      {
+        "path": "/etc/containers/systemd/httpd.container",
+        "contents": {
+          "compression": "gzip",
+          "source": "data:;base64,H4sIAAAAAAAC/3SRwWrjYAyE73oKv4Bjl7IQAjp0u4cGlhJSyh5CDop/JRZVfhn9crOGPvySrNtbb9J8DBpGu9cssYdfXDqXIcQyPkUMqXphf5eO4Q/lKJg5LuZvtWWVzIsgP3HAwzHYv2Gwe7QcJJl9D1/jM50ZaaCu57pnVasv5ppgfaYTY7LujX0h1qgcnHxq+muWFekgmQE240Gl9BvzwGW7bFfLFuCJSaN/PCfsRteqPlZX06pp1DrS3kqslm1TfXxU/FeiupsN6xzs76R496PM0pbDhQvez/tLkMeGXSzhfVvg2UKOE/Y3OAE8jGGvQ6JgdD5JCZ8AftOBFWkY8JYdYDvmdZbA8JFhY+m/vhgsAezmlvew5XK9hqQXmgrAbp1LkOr+9gBOPyc8jxpSj4X9s+MvlPhIo8an/i8AAP//65GSztUBAAA="
+        }
+      },
+      {
+        "path": "/etc/containers/systemd/httpd.pod",
+        "contents": {
+          "compression": "",
+          "source": "data:,%5BPod%5D%0APublishPort%3D8080%3A80"
+        }
+      }
+    ]
+  },
+  "systemd": {
+    "units": [
+      {
+        "enabled": true,
+        "name": "podman-auto-update.timer"
+      }
+    ]
+  }
+}

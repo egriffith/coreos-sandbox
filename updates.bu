@@ -1,0 +1,18 @@
+variant: fcos
+version: 1.7.0
+storage:
+  files:
+    - path: /etc/zincati/config.d/51-rollout-wariness.toml
+      contents:
+        inline: |
+          [identity]
+          rollout_wariness = 1
+    - path: /etc/zincati/config.d/55-updates-strategy.toml
+      contents:
+        inline: |
+          [updates]
+          strategy = "periodic"
+          [[updates.periodic.window]]
+          days = [ "Wed",]
+          start_time = "03:30"
+          length_minutes = 60

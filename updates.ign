@@ -1,0 +1,23 @@
+{
+  "ignition": {
+    "version": "3.6.0"
+  },
+  "storage": {
+    "files": [
+      {
+        "path": "/etc/zincati/config.d/51-rollout-wariness.toml",
+        "contents": {
+          "compression": "",
+          "source": "data:,%5Bidentity%5D%0Arollout_wariness%20%3D%201%0A"
+        }
+      },
+      {
+        "path": "/etc/zincati/config.d/55-updates-strategy.toml",
+        "contents": {
+          "compression": "",
+          "source": "data:;base64,W3VwZGF0ZXNdCnN0cmF0ZWd5ID0gInBlcmlvZGljIgpbW3VwZGF0ZXMucGVyaW9kaWMud2luZG93XV0KZGF5cyA9IFsgIldlZCIsXQpzdGFydF90aW1lID0gIjAzOjMwIgpsZW5ndGhfbWludXRlcyA9IDYw"
+        }
+      }
+    ]
+  }
+}

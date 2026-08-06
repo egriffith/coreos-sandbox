@@ -1,19 +1,12 @@
 variant: fcos
 version: 1.7.0
-passwd:
-  users:
-    - name: core
-      password_hash: $y$j9T$4XCbjNhq32PfMZYL2mK5W1$CVfKJJiTYgrtyx93rmMTAEoNZv6mKaLLjr5vLKS3C08
-storage:
-  files:
-    - path: /opt/file
-      contents:
-        inline: Hello, world!
-      mode: 0644
-      user:
-        id: 500
-      group:
-        id: 501
+ignition:
+  config:
+    merge:
+    - source: https://raw.githubusercontent.com/egriffith/coreos-sandbox/refs/heads/users.ign
+    - source: https://raw.githubusercontent.com/egriffith/coreos-sandbox/refs/heads/updates.ign
+    - source: https://raw.githubusercontent.com/egriffith/coreos-sandbox/refs/heads/apache-hello-world.ign
+
 systemd:
   units:
     - name: hello.service

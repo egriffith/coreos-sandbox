@@ -1,0 +1,49 @@
+variant: fcos
+version: 1.7.0
+systemd:
+  units:
+    - name: podman-auto-update.timer
+      enabled: true
+
+storage:
+  files:
+    - path: /etc/containers/systemd/httpd.container
+      contents:
+        inline: |
+          [Unit]
+          Description=Httpd Service
+          Wants=network-online.target
+          After=network-online.target
+
+          [Container]
+          ContainerName=apache-hello-world
+          Image=docker.io/library/httpd:alpine
+
+          PublishPort=8080:80
+
+          HealthCmd=curl -f http://localhost:80/ || exit 1
+          HealthInterval=15s
+          HealthRetries=3
+          HealthStartPeriod=30s
+          Notify=healthy
+
+          AutoUpdate=registry
+
+          Label=app=httpd
+
+          RunInit=true
+          Pod=httpd.pod
+
+          [Service]
+          Restart=always
+
+          [Install]
+          WantedBy=multi-user.target
+          WantedBy=default.target
+
+
+    - path: /etc/containers/systemd/httpd.pod
+      contents:
+        inline: |
+          [Pod]
+          PublishPort=8080:80

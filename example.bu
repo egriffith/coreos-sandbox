@@ -1,0 +1,25 @@
+variant: fcos
+version: 1.7.0
+storage:
+  files:
+    - path: /opt/file
+      contents:
+        inline: Hello, world!
+      mode: 0644
+      user:
+        id: 500
+      group:
+        id: 501
+systemd:
+  units:
+    - name: hello.service
+      enabled: true
+      contents: |
+        [Unit]
+        Description=A hello world unit!
+        [Service]
+        Type=oneshot
+        RemainAfterExit=yes
+        ExecStart=/usr/bin/echo "Hello, World!"
+        [Install]
+        WantedBy=multi-user.target

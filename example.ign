@@ -1,0 +1,18 @@
+{
+  "ignition": {
+    "config": {
+      "merge": [
+        {
+          "source": "https://raw.githubusercontent.com/egriffith/coreos-sandbox/refs/heads/users.ign"
+        },
+        {
+          "source": "https://raw.githubusercontent.com/egriffith/coreos-sandbox/refs/heads/updates.ign"
+        },
+        {
+          "source": "https://raw.githubusercontent.com/egriffith/coreos-sandbox/refs/heads/apache-hello-world.ign"
+        }
+      ]
+    },
+    "version": "3.6.0"
+  }
+}

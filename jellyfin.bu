@@ -1,0 +1,66 @@
+variant: fcos
+version: 1.7.0
+systemd:
+  units:
+    - name: podman-auto-update.timer
+      enabled: true
+
+storage:
+  files:
+    - path: /etc/containers/systemd/jellyfin-cache.container
+      contents:
+        inline: |
+          [Volume]
+          Label=app=jellyfin
+          
+    - path: /etc/containers/systemd/jellyfin-config.container
+      contents:
+        inline: |
+          [Volume]
+          Label=app=jellyfin
+
+    - path: /etc/containers/systemd/jellyfin-media.container
+      contents:
+        inline: |
+          [Volume]
+          Label=app=jellyfin
+          
+    - path: /etc/containers/systemd/jellyfin.container
+      contents:
+        inline: |
+          [Container]
+          Image=docker.io/jellyfin/jellyfin:latest
+          AutoUpdate=registry
+          ContainerName=jellyfin
+          #UserNS=auto
+          Volume=jellyfin-config.volume:/config
+          Volume=jellyfin-cache.volume:/cache
+          Volume=jellyfin-media.volume:/media
+          #AddDevice=/dev/dri/:/dev/dri/
+          Label=app=jellyfin
+          RunInit=true
+
+          PublishPort=8096:8096/tcp
+          PublishPort=8920:8920/tcp
+          PublishPort=1900:1900/udp
+          PublishPort=7359:7359/udp
+
+          #Below option requires Podman Quadlet 5.1.0 or greater.
+          #As of May 2024, 5.0.3 is current version and 5.1.0 is in testing.
+          #Needed for Video Transcoding Support
+          #GroupAdd=keep-groups
+
+          [Service]
+          # Inform systemd of additional exit status
+          SuccessExitStatus=0 143
+          TimeoutStartSec=900
+          Restart=on-failure
+
+
+          [Install]
+          # Start by default on boot
+          WantedBy=default.target
+
+
+          [Unit]
+          After=network.target

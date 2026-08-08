@@ -1,0 +1,45 @@
+{
+  "ignition": {
+    "version": "3.6.0"
+  },
+  "storage": {
+    "files": [
+      {
+        "path": "/etc/containers/systemd/jellyfin-cache.container",
+        "contents": {
+          "compression": "",
+          "source": "data:,%5BVolume%5D%0ALabel%3Dapp%3Djellyfin%0A"
+        }
+      },
+      {
+        "path": "/etc/containers/systemd/jellyfin-config.container",
+        "contents": {
+          "compression": "",
+          "source": "data:,%5BVolume%5D%0ALabel%3Dapp%3Djellyfin%0A"
+        }
+      },
+      {
+        "path": "/etc/containers/systemd/jellyfin-media.container",
+        "contents": {
+          "compression": "",
+          "source": "data:,%5BVolume%5D%0ALabel%3Dapp%3Djellyfin%0A"
+        }
+      },
+      {
+        "path": "/etc/containers/systemd/jellyfin.container",
+        "contents": {
+          "compression": "gzip",
+          "source": "data:;base64,H4sIAAAAAAAC/2SRT2/bMAzF7/oUBHxdbfffthjQId2GIcBWdHXbHYoeFIt2tcqiR1Fp/e0HZVm6IpcHPv4eadq+/0RBjAvID2o1mgG1pe4JuXRU/ULv596FfdF4IxhFLZPQ7WSNoGYcXBSe1X7PpRlR/5tQxW1Evmy1SULqjnz6Dx51FHo3lJttu6n+2sOU6R7xNZTdQWZE68w+s3WqWFr7GTeuQ11Z3FSWXdXsK/XNrNFrM02vx16nsApOtHBCpa7S2rv4eEUs+mO9eN9kqaSb3pLFSd1kOSDHi7puslTJviUfTs8XTZYtUcUFenoGmsRRAMbfyTFGuCI7mgA/krEeBc7L47IGYhgYjSCXqlhGoB6+mxlO6pOzd3Be1uUpuAhdYsYgsEGOeacJdjfvIrgA+S+6MJSquES0aKEnhjtnkeCGTYgdWRcGaNM0EYsqvjKlaWmtfkKcjobsolL3LXL+vA+qgFXoiUeIcxQcbT7LWOvyCxkP+OIEohhJUbWp6zDGLy9O2m1H13B8dqpu3IiUco+lxU4v6lpdY8xWUzjqjfOJUSl1vwpRjPf5qds0rGew2JvkBSjAmkjUTxME7cWsd6AUwwNKHr8NTh7UshdkHVCeiZ929E8AAAD//4x1nW4MAwAA"
+        }
+      }
+    ]
+  },
+  "systemd": {
+    "units": [
+      {
+        "enabled": true,
+        "name": "podman-auto-update.timer"
+      }
+    ]
+  }
+}

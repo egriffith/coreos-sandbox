@@ -3,6 +3,9 @@ version: 1.7.0
 ignition:
   config:
     merge:
-    - source: https://raw.githubusercontent.com/egriffith/coreos-sandbox/refs/heads/users.ign
-    - source: https://raw.githubusercontent.com/egriffith/coreos-sandbox/refs/heads/updates.ign
-    - source: https://raw.githubusercontent.com/egriffith/coreos-sandbox/refs/heads/apache-hello-world.ign
+    #- source: https://raw.githubusercontent.com/egriffith/coreos-sandbox/refs/heads/users.ign
+    #- source: https://raw.githubusercontent.com/egriffith/coreos-sandbox/refs/heads/updates.ign
+    - source: http://192.168.64.1:8000/ignition/users.ign
+    - source: http://192.168.64.1:8000/ignition/hostname.ign
+    - source: http://192.168.64.1:8000/ignition/updates.ign
+    - source: http://192.168.64.1:8000/ignition/jellyfin.ign

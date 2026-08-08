@@ -1,0 +1,21 @@
+{
+  "ignition": {
+    "config": {
+      "merge": [
+        {
+          "source": "http://192.168.64.1:8000/ignition/users.ign"
+        },
+        {
+          "source": "http://192.168.64.1:8000/ignition/hostname.ign"
+        },
+        {
+          "source": "http://192.168.64.1:8000/ignition/updates.ign"
+        },
+        {
+          "source": "http://192.168.64.1:8000/ignition/jellyfin.ign"
+        }
+      ]
+    },
+    "version": "3.6.0"
+  }
+}

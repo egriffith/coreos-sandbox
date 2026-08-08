@@ -17,33 +17,18 @@ storage:
 
           [Container]
           ContainerName=apache-hello-world
-          Image=docker.io/library/httpd:alpine
-
-          PublishPort=8080:80
-
-          HealthCmd=curl -f http://localhost:80/ || exit 1
-          HealthInterval=15s
-          HealthRetries=3
-          HealthStartPeriod=30s
-          Notify=healthy
+          Image=docker.io/library/httpd:alpi
 
           AutoUpdate=registry
-
           Label=app=httpd
 
           RunInit=true
-          Pod=httpd.pod
+          PublishPort=8080:80
 
           [Service]
           Restart=always
+          TimeoutStartSec=infinity
 
           [Install]
           WantedBy=multi-user.target
           WantedBy=default.target
-
-
-    - path: /etc/containers/systemd/httpd.pod
-      contents:
-        inline: |
-          [Pod]
-          PublishPort=8080:80

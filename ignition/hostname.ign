@@ -1,0 +1,18 @@
+{
+  "ignition": {
+    "version": "3.6.0"
+  },
+  "storage": {
+    "files": [
+      {
+        "overwrite": true,
+        "path": "/etc/hostname",
+        "contents": {
+          "compression": "",
+          "source": "data:,homelab"
+        },
+        "mode": 420
+      }
+    ]
+  }
+}

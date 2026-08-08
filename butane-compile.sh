@@ -10,5 +10,5 @@ for file in *.bu; do
     
     echo "Processing ${file} ..."
     # Run the butane command and output to the .ign file
-    butane --pretty --strict "$file" > "${basename}.ign"
+    butane --pretty --strict "$file" > ignition/"${basename}.ign"
 done

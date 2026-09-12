@@ -9,7 +9,7 @@
         "path": "/etc/hostname",
         "contents": {
           "compression": "",
-          "source": "data:,homelab"
+          "source": "data:,homelab-coreos"
         },
         "mode": 420
       }

@@ -6,4 +6,4 @@ storage:
       mode: 0644
       overwrite: true
       contents:
-        inline: homelab
+        inline: homelab-coreos

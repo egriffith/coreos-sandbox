@@ -1,0 +1,13 @@
+variant: fcos
+version: 1.7.0
+ignition:
+  config:
+    merge:
+    - source: http://192.168.64.1:8000/ignition/podman-auto-update.ign
+    - source: http://192.168.64.1:8000/ignition/podman-auto-prune.ign
+    - source: http://192.168.64.1:8000/ignition/block-docker.ign
+    - source: http://192.168.64.1:8000/ignition/hostname.ign
+    - source: http://192.168.64.1:8000/ignition/zram.ign
+    - source: http://192.168.64.1:8000/ignition/homelab-layered-packages.ign
+    - source: http://192.168.64.1:8000/ignition/updates.ign
+    - source: http://192.168.64.1:8000/ignition/ansible.ign

@@ -1,0 +1,19 @@
+{
+  "ignition": {
+    "version": "3.3.0"
+  },
+  "systemd": {
+    "units": [
+      {
+        "contents": "[Unit]\nDescription=Automated Podman System Prune\nDocumentation=https://podman.io\nWants=network-online.target\nAfter=network-online.target\n\n[Service]\nType=oneshot\n# Filter forces pruning of stopped containers/images unused for at least 7 days (168 hours)\n# Named volumes are preserved by omitting the --volumes flag\nExecStart=/usr/bin/podman system prune --force --filter until=168h\n\n[Install]\nWantedBy=multi-user.target\n",
+        "enabled": true,
+        "name": "podman-auto-prune.service"
+      },
+      {
+        "contents": "[Unit]\nDescription=Trigger podman-auto-prune service periodically\n\n[Timer]\n# Runs the pruning service every day at midnight\nOnCalendar=daily\n# Ensures accuracy while preventing synchronized spikes across multiple instances\nRandomizedDelaySec=1h\nPersistent=true\n\n[Install]\nWantedBy=timers.target\n",
+        "enabled": true,
+        "name": "podman-auto-prune.timer"
+      }
+    ]
+  }
+}

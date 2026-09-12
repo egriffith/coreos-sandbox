@@ -1,0 +1,27 @@
+{
+  "ignition": {
+    "version": "3.6.0"
+  },
+  "passwd": {
+    "users": [
+      {
+        "name": "ansible",
+        "sshAuthorizedKeys": [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINqoV+Hn3t08WXPE4N8wovztdXJUxmF56NNYTkb5lp6h"
+        ]
+      }
+    ]
+  },
+  "storage": {
+    "files": [
+      {
+        "path": "/etc/sudoers.d/ansible",
+        "contents": {
+          "compression": "",
+          "source": "data:,ansible%20ALL%3D(ALL)%20NOPASSWD%3AALL"
+        },
+        "mode": 288
+      }
+    ]
+  }
+}

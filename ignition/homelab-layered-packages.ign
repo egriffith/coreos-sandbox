@@ -1,0 +1,26 @@
+{
+  "ignition": {
+    "version": "3.6.0"
+  },
+  "storage": {
+    "files": [
+      {
+        "path": "/etc/sysconfig/rpm-ostree-layered-packages",
+        "contents": {
+          "compression": "",
+          "source": "data:,PACKAGES%3D%22qemu-guest-agent%20python3%20libselinux-python3%20python3-libsemanage%22%0A"
+        },
+        "mode": 420
+      }
+    ]
+  },
+  "systemd": {
+    "units": [
+      {
+        "contents": "[Unit]\nDescription=Layer packages with rpm-ostree\nWants=network-online.target\nAfter=network-online.target\nRequires=podman-system-generator.service\nBefore=zincati.service\nConditionPathExists=!/var/lib/%N.stamp\n\n[Service]\nType=oneshot\nRemainAfterExit=yes\n\n# Load the environment file containing the package variable\nEnvironmentFile=/etc/sysconfig/rpm-ostree-layered-packages\n\n# Install the packages and reboot asynchronously\nExecStart=/usr/bin/rpm-ostree install -y --allow-inactive $PACKAGES\nExecStart=/bin/touch /var/lib/%N.stamp\nExecStart=/bin/systemctl --no-block reboot\n\n[Install]\nWantedBy=multi-user.target",
+        "enabled": true,
+        "name": "rpm-ostree-install-layered-packages.service"
+      }
+    ]
+  }
+}

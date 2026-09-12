@@ -7,6 +7,7 @@ storage:
         inline: |
           [identity]
           rollout_wariness = 1
+
     - path: /etc/zincati/config.d/55-updates-strategy.toml
       contents:
         inline: |

@@ -1,0 +1,10 @@
+variant: fcos
+version: 1.7.0
+systemd:
+  units:
+    - name: docker.service
+      enabled: false
+      mask: true
+    - name: docker.socket
+      enabled: false
+      mask: true

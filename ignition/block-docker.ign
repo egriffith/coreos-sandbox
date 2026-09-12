@@ -1,0 +1,19 @@
+{
+  "ignition": {
+    "version": "3.6.0"
+  },
+  "systemd": {
+    "units": [
+      {
+        "enabled": false,
+        "mask": true,
+        "name": "docker.service"
+      },
+      {
+        "enabled": false,
+        "mask": true,
+        "name": "docker.socket"
+      }
+    ]
+  }
+}

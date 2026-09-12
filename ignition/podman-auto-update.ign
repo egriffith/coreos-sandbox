@@ -1,0 +1,13 @@
+{
+  "ignition": {
+    "version": "3.6.0"
+  },
+  "systemd": {
+    "units": [
+      {
+        "enabled": true,
+        "name": "podman-auto-update.timer"
+      }
+    ]
+  }
+}

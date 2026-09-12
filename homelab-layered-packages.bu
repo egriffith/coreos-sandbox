@@ -1,0 +1,38 @@
+variant: fcos
+version: 1.7.0
+storage:
+  files:
+    # Packages defined in a dedicated configuration file
+    - path: /etc/sysconfig/rpm-ostree-layered-packages
+      mode: 0644
+      contents:
+        inline: |
+          PACKAGES="qemu-guest-agent python3 libselinux-python3 python3-libsemanage"
+
+systemd:
+  units:
+    - name: rpm-ostree-install-layered-packages.service
+      enabled: true
+      contents: |
+        [Unit]
+        Description=Layer packages with rpm-ostree
+        Wants=network-online.target
+        After=network-online.target
+        Requires=podman-system-generator.service
+        Before=zincati.service
+        ConditionPathExists=!/var/lib/%N.stamp
+
+        [Service]
+        Type=oneshot
+        RemainAfterExit=yes
+        
+        # Load the environment file containing the package variable
+        EnvironmentFile=/etc/sysconfig/rpm-ostree-layered-packages
+        
+        # Install the packages and reboot asynchronously
+        ExecStart=/usr/bin/rpm-ostree install -y --allow-inactive $PACKAGES
+        ExecStart=/bin/touch /var/lib/%N.stamp
+        ExecStart=/bin/systemctl --no-block reboot
+
+        [Install]
+        WantedBy=multi-user.target

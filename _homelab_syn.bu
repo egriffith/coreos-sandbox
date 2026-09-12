@@ -1,0 +1,13 @@
+variant: fcos
+version: 1.7.0
+ignition:
+  config:
+    merge:
+    - source: https://raw.githubusercontent.com/egriffith/coreos-sandbox/refs/heads/ignition/podman-auto-update.ign
+    - source: https://raw.githubusercontent.com/egriffith/coreos-sandbox/refs/heads/ignition/podman-auto-prune.ign
+    - source: https://raw.githubusercontent.com/egriffith/coreos-sandbox/refs/heads/ignition/block-docker.ign
+    - source: https://raw.githubusercontent.com/egriffith/coreos-sandbox/refs/heads/ignition/hostname.ign
+    - source: https://raw.githubusercontent.com/egriffith/coreos-sandbox/refs/heads/ignition/zram.ign
+    - source: https://raw.githubusercontent.com/egriffith/coreos-sandbox/refs/heads/ignition/homelab-layered-packages.ign
+    - source: https://raw.githubusercontent.com/egriffith/coreos-sandbox/refs/heads/ignition/updates.ign
+    - source: https://raw.githubusercontent.com/egriffith/coreos-sandbox/refs/heads/ignition/ansible.ign

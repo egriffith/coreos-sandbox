@@ -1,0 +1,37 @@
+variant: fcos
+version: 1.4.0
+systemd:
+  units:
+    - name: podman-auto-prune.service
+      enabled: true
+      contents: |
+        [Unit]
+        Description=Automated Podman System Prune
+        Documentation=https://podman.io
+        Wants=network-online.target
+        After=network-online.target
+
+        [Service]
+        Type=oneshot
+        # Filter forces pruning of stopped containers/images unused for at least 7 days (168 hours)
+        # Named volumes are preserved by omitting the --volumes flag
+        ExecStart=/usr/bin/podman system prune --force --filter until=168h
+
+        [Install]
+        WantedBy=multi-user.target
+
+    - name: podman-auto-prune.timer
+      enabled: true
+      contents: |
+        [Unit]
+        Description=Trigger podman-auto-prune service periodically
+
+        [Timer]
+        # Runs the pruning service every day at midnight
+        OnCalendar=daily
+        # Ensures accuracy while preventing synchronized spikes across multiple instances
+        RandomizedDelaySec=1h
+        Persistent=true
+
+        [Install]
+        WantedBy=timers.target

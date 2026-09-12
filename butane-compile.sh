@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Clear out the ignition directory first to remove leftovers from previous runs
+echo "Cleaning ignition/ directory..."
+rm -rf ignition/*
+
 # Loop through all files ending in .bu in the current directory
 for file in *.bu; do
     # Ensure the file exists to handle empty directories gracefully

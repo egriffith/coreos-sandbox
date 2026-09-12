@@ -6,6 +6,9 @@
           "source": "http://192.168.64.1:8000/ignition/podman-auto-update.ign"
         },
         {
+          "source": "http://192.168.64.1:8000/ignition/podman-auto-prune.ign"
+        },
+        {
           "source": "http://192.168.64.1:8000/ignition/block-docker.ign"
         },
         {

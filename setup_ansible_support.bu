@@ -1,12 +1,26 @@
 variant: fcos
 version: 1.7.0
+passwd:
+  users:
+    - name: ansible
+      ssh_authorized_keys:
+        - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINqoV+Hn3t08WXPE4N8wovztdXJUxmF56NNYTkb5lp6h
+
+storage:
+  files:
+    - path: /etc/sudoers.d/ansible
+      mode: 0440
+      contents:
+        inline: |
+          ansible ALL=(ALL) NOPASSWD:ALL
+
 systemd:
   units:
-    - name: rpm-ostree-install-layered-packages.service
+    - name: rpm-ostree-install-ansible-packages.service
       enabled: true
       contents: |
         [Unit]
-        Description=Layer packages with rpm-ostree
+        Description=Layer packages required for ansible with rpm-ostree 
         Wants=network-online.target
         After=network-online.target
         Before=zincati.service
@@ -16,11 +30,9 @@ systemd:
         Type=oneshot
         RemainAfterExit=yes
         
-        
-        # Install the packages and reboot asynchronously
+        # Install the packages asynchronously
         ExecStart=/usr/bin/rpm-ostree install -y --allow-inactive qemu-guest-agent python3 libselinux-python3 python3-libsemanage
         ExecStart=/bin/touch /var/lib/%N.stamp
-        ExecStart=/bin/systemctl --no-block reboot
 
         [Install]
         WantedBy=multi-user.target

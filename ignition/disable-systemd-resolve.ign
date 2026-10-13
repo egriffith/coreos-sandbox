@@ -1,0 +1,26 @@
+{
+  "ignition": {
+    "version": "3.6.0"
+  },
+  "storage": {
+    "files": [
+      {
+        "path": "/etc/systemd/resolved.conf.d/disable-stub.conf",
+        "contents": {
+          "compression": "",
+          "source": "data:,%5BResolve%5D%0ADNSStubListener%3Dno%0A"
+        },
+        "mode": 420
+      },
+      {
+        "overwrite": true,
+        "path": "/etc/resolv.conf",
+        "contents": {
+          "compression": "",
+          "source": "data:,nameserver%201.1.1.1"
+        },
+        "mode": 420
+      }
+    ]
+  }
+}

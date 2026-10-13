@@ -1,0 +1,17 @@
+variant: fcos
+version: 1.7.0
+storage:
+  disks:
+    - device: /dev/sdb
+      # Do not wipe the partition table to preserve existing partitions and data
+      wipe_table: false
+      partitions:
+        - number: 1
+          label: DATA-DISK
+  filesystems:
+    - path: /var/mnt/data
+      device: /dev/disk/by-partlabel/DATA-DISK
+      format: xfs
+      # Do not wipe the filesystem to preserve existing partitions and data
+      wipe_filesystem: false
+      with_mount_unit: true

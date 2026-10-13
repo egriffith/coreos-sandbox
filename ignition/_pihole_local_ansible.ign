@@ -1,0 +1,28 @@
+{
+  "ignition": {
+    "config": {
+      "merge": [
+        {
+          "source": "http://192.168.64.1:8000/ignition/setup_data_disk.ign"
+        },
+        {
+          "source": "http://192.168.64.1:8000/ignition/setup_ansible_user.ign"
+        }
+      ]
+    },
+    "version": "3.6.0"
+  },
+  "storage": {
+    "files": [
+      {
+        "overwrite": true,
+        "path": "/etc/hostname",
+        "contents": {
+          "compression": "",
+          "source": "data:,homelab-pihole"
+        },
+        "mode": 420
+      }
+    ]
+  }
+}

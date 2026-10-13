@@ -1,0 +1,16 @@
+variant: fcos
+version: 1.7.0
+storage:
+  files:
+    - path: /etc/systemd/resolved.conf.d/disable-stub.conf
+      mode: 0644
+      contents:
+        inline: |
+          [Resolve]
+          DNSStubListener=no
+    - path: /etc/resolv.conf
+      mode: 0644
+      overwrite: true
+      contents:
+        inline: |
+          nameserver 1.1.1.1

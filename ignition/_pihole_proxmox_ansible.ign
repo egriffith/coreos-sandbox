@@ -6,7 +6,7 @@
           "source": "https://raw.githubusercontent.com/egriffith/coreos-sandbox/refs/heads/main/ignition/setup_data_disk.ign"
         },
         {
-          "source": "https://raw.githubusercontent.com/egriffith/coreos-sandbox/refs/heads/main/ignition/setup_ansible_user.ign"
+          "source": "https://raw.githubusercontent.com/egriffith/coreos-sandbox/refs/heads/main/ignition/setup_ansible_support.ign"
         }
       ]
     },

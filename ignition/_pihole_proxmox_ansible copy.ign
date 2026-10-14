@@ -3,10 +3,10 @@
     "config": {
       "merge": [
         {
-          "source": "http://192.168.64.1:8000/ignition/setup_data_disk.ign"
+          "source": "https://raw.githubusercontent.com/egriffith/coreos-sandbox/refs/heads/main/ignition/setup_data_disk.ign"
         },
         {
-          "source": "http://192.168.64.1:8000/ignition/setup_ansible_user.ign"
+          "source": "https://raw.githubusercontent.com/egriffith/coreos-sandbox/refs/heads/main/ignition/setup_ansible_user.ign"
         }
       ]
     },

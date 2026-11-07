@@ -1,0 +1,7 @@
+variant: fcos
+version: 1.7.0
+ignition:
+  config:
+    merge:
+    - source: https://raw.githubusercontent.com/egriffith/coreos-sandbox/refs/heads/main/ignition/setup_ansible_support.ign
+    - source: https://raw.githubusercontent.com/egriffith/coreos-sandbox/refs/heads/main/ignition/setup_data_disk.ign
